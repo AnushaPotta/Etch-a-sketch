@@ -1,7 +1,7 @@
 function createContainerGrid() {
+  const container = document.getElementById("grid-container");
+  const button = document.getElementById("size");
   function gridSize(size) {
-    const container = document.getElementById("grid-container");
-    const button = document.getElementById("size");
     container.innerHTML = "";
 
     for (let i = 1; i <= size; i++) {
@@ -18,18 +18,21 @@ function createContainerGrid() {
       }
       container.appendChild(row);
     }
-    button.addEventListener("click", () => {
-      const input = prompt("Enter the grid size");
-      const new_size = parseInt(input);
-      if (!isNaN(new_size) && new_size > 0) {
-        gridSize(new_size);
-      } else if (input !== null) {
-        alert("pls enter a valid number");
-      }
-    });
   }
-
   gridSize(16);
+  button.addEventListener("click", () => {
+    const input = prompt("Enter the grid size less than 100");
+    const new_size = parseInt(input);
+    if (!isNaN(new_size) && new_size > 0) {
+      if (input <= 100) {
+        gridSize(new_size);
+      } else {
+        alert("pls enter a number less than 100");
+      }
+    } else if (input !== null) {
+      alert("pls enter a valid number");
+    }
+  });
 }
 
 createContainerGrid();

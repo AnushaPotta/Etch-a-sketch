@@ -14,3 +14,9 @@
   flex: 1;
   background-color: white;
 }
+#size {
+  margin-top: 20px;
+  background-color: rgb(229, 166, 229);
+  border-radius: 5px;
+  width: 100px;
+}

@@ -18,9 +18,22 @@ function createContainerGrid() {
       for (let j = 1; j <= size; j++) {
         const cell = document.createElement("div");
         cell.classList.add("grid-cell");
+
+        cell.style.opacity = "0.1";
+
+        cell.dataset.interactions = "0";
         row.appendChild(cell);
         cell.addEventListener("mouseenter", () => {
-          cell.style.backgroundColor = getRandomColor();
+          let count = parseInt(cell.dataset.interactions);
+
+          if (count < 10) {
+            if (count === 0) {
+              cell.style.backgroundColor = getRandomColor();
+            }
+            count++;
+            cell.dataset.interactions = count;
+            cell.style.opacity = (count * 0.1).toString();
+          }
         });
       }
       container.appendChild(row);
